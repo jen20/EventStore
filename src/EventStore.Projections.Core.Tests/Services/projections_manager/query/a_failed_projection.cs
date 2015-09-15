@@ -131,7 +131,7 @@ namespace EventStore.Projections.Core.Tests.Services.projections_manager.query
             }
 
             [Test]
-            public void the_projection_status_becomes_running_enabled() // as we restart
+            public void the_projection_status_becomes_faulted() // as we restart
             {
                 _manager.Handle(
                     new ProjectionManagementMessage.Command.GetStatistics(
@@ -150,7 +150,7 @@ namespace EventStore.Projections.Core.Tests.Services.projections_manager.query
                              .Projections.Single()
                              .Name);
                 Assert.AreEqual(
-                    ManagedProjectionState.Running,
+                    ManagedProjectionState.Faulted,
                     _consumer.HandledMessages.OfType<ProjectionManagementMessage.Statistics>()
                              .Single()
                              .Projections.Single()

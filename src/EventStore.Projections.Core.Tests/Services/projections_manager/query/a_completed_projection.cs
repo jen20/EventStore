@@ -98,7 +98,7 @@ namespace EventStore.Projections.Core.Tests.Services.projections_manager.query
             }
 
             [Test]
-            public void the_projection_status_becomes_running_enabled()
+            public void the_projection_status_becomes_completed()
             {
                 _manager.Handle(
                     new ProjectionManagementMessage.Command.GetStatistics(
@@ -117,7 +117,7 @@ namespace EventStore.Projections.Core.Tests.Services.projections_manager.query
                              .Projections.Single()
                              .Name);
                 Assert.AreEqual(
-                    ManagedProjectionState.Running,
+                    ManagedProjectionState.Completed,
                     _consumer.HandledMessages.OfType<ProjectionManagementMessage.Statistics>()
                              .Single()
                              .Projections.Single()
